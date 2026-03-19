@@ -1,34 +1,205 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* Hero Slider */
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+.hero-slide.active {
+  opacity: 1;
+}
+.hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+/* Glass effect */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.5);
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+.glass-nav-transparent {
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom: 1px solid transparent;
 }
 
-.App-link {
-    color: #61dafb;
+/* Gold underline accent */
+.gold-underline {
+  position: relative;
+  display: inline-block;
+}
+.gold-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #CCA43B;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* Section divider */
+.section-divider {
+  width: 60px;
+  height: 3px;
+  background: #CCA43B;
+}
+
+/* Card hover lift */
+.card-lift {
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.card-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Image zoom on hover */
+.img-zoom {
+  overflow: hidden;
+}
+.img-zoom img {
+  transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.img-zoom:hover img {
+  transform: scale(1.05);
+}
+
+/* Form step indicator */
+.step-dot {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+.step-dot.active {
+  background: #0F172A;
+  color: white;
+}
+.step-dot.completed {
+  background: #CCA43B;
+  color: white;
+}
+.step-dot.inactive {
+  background: #F1F5F9;
+  color: #94A3B8;
+}
+.step-line {
+  height: 2px;
+  flex: 1;
+  transition: background 0.3s ease;
+}
+.step-line.active {
+  background: #0F172A;
+}
+.step-line.inactive {
+  background: #E2E8F0;
+}
+
+/* Gradient overlays */
+.hero-gradient {
+  background: linear-gradient(to right, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.3));
+}
+
+/* Stat counter */
+.stat-card {
+  position: relative;
+  overflow: hidden;
+}
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: #CCA43B;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.4s ease;
+}
+.stat-card:hover::before {
+  transform: scaleY(1);
+}
+
+/* Navigation link hover */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #CCA43B;
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Testimonial card */
+.testimonial-card {
+  position: relative;
+  padding-left: 24px;
+  border-left: 3px solid #E2E8F0;
+  transition: border-color 0.3s ease;
+}
+.testimonial-card:hover {
+  border-left-color: #CCA43B;
+}
+
+/* Portfolio grid item */
+.portfolio-item {
+  position: relative;
+  overflow: hidden;
+}
+.portfolio-item .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.portfolio-item:hover .overlay {
+  opacity: 1;
+}
+.portfolio-item .overlay-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px;
+  transform: translateY(10px);
+  transition: transform 0.4s ease;
+}
+.portfolio-item:hover .overlay-content {
+  transform: translateY(0);
+}
+
+/* Sticky CTA pulse */
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+.pulse-ring::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid #CCA43B;
+  animation: pulse-ring 2s ease-out infinite;
 }
