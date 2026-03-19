@@ -1,0 +1,166 @@
+{
+  "design_system": {
+    "typography": {
+      "font_family": {
+        "heading": "Manrope, sans-serif",
+        "body": "DM Sans, sans-serif",
+        "accent": "Playfair Display, serif"
+      },
+      "weights": {
+        "light": 300,
+        "regular": 400,
+        "medium": 500,
+        "semibold": 600,
+        "bold": 700
+      },
+      "sizes": {
+        "display": "text-5xl md:text-7xl lg:text-8xl tracking-tight leading-none",
+        "h1": "text-4xl md:text-5xl lg:text-6xl tracking-tight",
+        "h2": "text-3xl md:text-4xl tracking-tight",
+        "h3": "text-2xl md:text-3xl tracking-normal",
+        "body_lg": "text-lg md:text-xl leading-relaxed",
+        "body": "text-base leading-relaxed",
+        "caption": "text-sm tracking-wide uppercase"
+      }
+    },
+    "colors": {
+      "primary": {
+        "DEFAULT": "#0F172A",
+        "foreground": "#F8FAFC",
+        "hover": "#1E293B"
+      },
+      "secondary": {
+        "DEFAULT": "#CCA43B",
+        "foreground": "#FFFFFF",
+        "hover": "#D4AF37"
+      },
+      "accent": {
+        "DEFAULT": "#F1F5F9",
+        "foreground": "#0F172A"
+      },
+      "background": {
+        "DEFAULT": "#FFFFFF",
+        "subtle": "#F8F9FA",
+        "dark": "#0F172A"
+      },
+      "text": {
+        "primary": "#0F172A",
+        "secondary": "#475569",
+        "muted": "#94A3B8",
+        "inverted": "#FFFFFF"
+      },
+      "border": {
+        "DEFAULT": "#E2E8F0",
+        "subtle": "#F1F5F9"
+      }
+    },
+    "spacing": {
+      "container": "container mx-auto px-4 md:px-8 lg:px-12",
+      "section_y": "py-20 md:py-32",
+      "element_gap": "gap-8 md:gap-12"
+    },
+    "visual_enhancers": {
+      "radius": "rounded-none md:rounded-sm",
+      "shadow": {
+        "card": "shadow-[0_2px_4px_rgba(0,0,0,0.05)]",
+        "hover": "shadow-[0_20px_40px_rgba(0,0,0,0.08)]",
+        "float": "shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
+      },
+      "glass": "bg-white/80 backdrop-blur-md border border-white/20",
+      "gradients": {
+        "hero_overlay": "bg-gradient-to-r from-slate-900/80 to-slate-900/20",
+        "metallic": "bg-gradient-to-br from-slate-100 to-slate-200"
+      }
+    }
+  },
+  "layout_strategies": {
+    "hero_section": {
+      "type": "slider_fullscreen",
+      "elements": [
+        "Full width background image",
+        "Overlay gradient for text readability",
+        "H1 Heading with 'Manrope' Light (300) weight",
+        "Primary CTA (Solid Navy) + Secondary CTA (Outline White)",
+        "Animated scroll indicator"
+      ]
+    },
+    "product_grid": {
+      "type": "bento_grid",
+      "columns": "grid-cols-1 md:grid-cols-3",
+      "gap": "gap-8",
+      "card_style": "minimal_border_hover_lift"
+    },
+    "features_section": {
+      "type": "split_screen_sticky",
+      "layout": "Sticky text on left, scrolling images on right (desktop)",
+      "mobile": "Stacked vertical"
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-primary text-primary-foreground hover:bg-primary/90 h-12 px-8 rounded-sm uppercase tracking-wider text-sm font-semibold transition-all duration-300",
+      "secondary": "border border-primary text-primary hover:bg-primary hover:text-white h-12 px-8 rounded-sm uppercase tracking-wider text-sm font-semibold transition-all duration-300",
+      "outline_white": "border border-white text-white hover:bg-white hover:text-primary h-12 px-8 rounded-sm uppercase tracking-wider text-sm font-semibold transition-all duration-300"
+    },
+    "cards": {
+      "product": "group relative overflow-hidden bg-white border border-border/50 hover:border-primary/20 transition-all duration-500 hover:shadow-hover",
+      "feature": "p-8 bg-background-subtle border-l-2 border-primary/10 hover:border-secondary transition-colors duration-300"
+    },
+    "navigation": {
+      "desktop": "fixed top-0 w-full z-50 transition-all duration-300 glass border-b border-border/10",
+      "mobile": "sheet-based sidebar with large typography"
+    },
+    "forms": {
+      "input": "h-12 bg-transparent border-b border-border focus:border-primary focus:ring-0 rounded-none px-0 transition-colors placeholder:text-muted-foreground/50",
+      "label": "text-xs uppercase tracking-widest text-muted-foreground mb-2 block"
+    }
+  },
+  "image_assets": {
+    "hero_slider": [
+      {
+        "url": "https://images.unsplash.com/photo-1758448721149-aa0ce8e1b2c9?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjh8MHwxfHNlYXJjaHw0fHxtb2Rlcm4lMjBvZmZpY2UlMjBnbGFzcyUyMHBhcnRpdGlvbiUyMGx1eHVyeSUyMGludGVyaW9yfGVufDB8fHx8MTc3Mzk1MjY3M3ww&ixlib=rb-4.1.0&q=85",
+        "alt": "Espace de bureau moderne avec cloisons vitrées"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1636125657985-7384a5478f5a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2Mzl8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBjb25mZXJlbmNlJTIwcm9vbSUyMGdsYXNzJTIwd2FsbHMlMjBsdXh1cnl8ZW58MHx8fHwxNzczOTUyNjkwfDA&ixlib=rb-4.1.0&q=85",
+        "alt": "Salle de réunion vitrée acoustique"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1497366412874-3415097a27e7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjh8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBvZmZpY2UlMjBnbGFzcyUyMHBhcnRpdGlvbiUyMGx1eHVyeSUyMGludGVyaW9yfGVufDB8fHx8MTc3Mzk1MjY3M3ww&ixlib=rb-4.1.0&q=85",
+        "alt": "Séparation élégante pour open space"
+      }
+    ],
+    "products": {
+      "vitrees": "https://images.unsplash.com/photo-1770048532712-4fde5ef7eb90?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2Mzl8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBjb25mZXJlbmNlJTIwcm9vbSUyMGdsYXNzJTIwd2FsbHMlMjBsdXh1cnl8ZW58MHx8fHwxNzczOTUyNjkwfDA&ixlib=rb-4.1.0&q=85",
+      "pleines": "https://images.unsplash.com/photo-1765766600807-1aa22f3dee72?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjh8MHwxfHNlYXJjaHwzfHxtb2Rlcm4lMjBvZmZpY2UlMjBnbGFzcyUyMHBhcnRpdGlvbiUyMGx1eHVyeSUyMGludGVyaW9yfGVufDB8fHx8MTc3Mzk1MjY3M3ww&ixlib=rb-4.1.0&q=85",
+      "mobiles": "https://images.unsplash.com/photo-1628019136740-520ef507f489?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjh8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBvZmZpY2UlMjBnbGFzcyUyMHBhcnRpdGlvbiUyMGx1eHVyeSUyMGludGVyaW9yfGVufDB8fHx8MTc3Mzk1MjY3M3ww&ixlib=rb-4.1.0&q=85"
+    },
+    "expertise": "https://images.unsplash.com/photo-1772442198624-4fc4d7281e89?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDZ8MHwxfHNlYXJjaHwyfHxhcmNoaXRlY3QlMjBjaGVja2luZyUyMGJsdWVwcmludHMlMjBjbG9zZSUyMHVwJTIwaGFuZHN8ZW58MHx8fHwxNzczOTUyNjg4fDA&ixlib=rb-4.1.0&q=85",
+    "background_texture": "https://images.unsplash.com/photo-1769041503681-7f81cb164a5c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njd8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMGFyY2hpdGVjdHVyYWwlMjBnbGFzcyUyMGZhY2FkZSUyMGRldGFpbHxlbnwwfHx8fDE3NzM5NTI2OTB8MA&ixlib=rb-4.1.0&q=85"
+  },
+  "motion": {
+    "page_transition": "initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.5, ease: 'easeOut' }}",
+    "stagger_children": "variants={{ hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.1 } } }}",
+    "scroll_reveal": "initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, ease: 'circOut' }}"
+  },
+  "instructions_to_main_agent": [
+    "INSTALL_DEPENDENCIES: npm install lucide-react framer-motion clsx tailwind-merge embla-carousel-react react-hook-form zod @hookform/resolvers @radix-ui/react-accordion @radix-ui/react-dialog @radix-ui/react-label @radix-ui/react-slot @radix-ui/react-tabs",
+    "THEME: Force Light Mode as default. Use Dark Mode ONLY for the Footer or specific 'Cinema' presentation sections.",
+    "FONTS: Import 'Manrope' and 'DM Sans' from Google Fonts in index.css.",
+    "NAVBAR: Create a transparent navbar that becomes white/glassy on scroll.",
+    "HERO: Implement a full-screen image slider with slow fade transitions (5s interval). Use gradients to ensure text readability.",
+    "FORMS: Use Shadcn Form + React Hook Form for the Multi-step Quote Wizard. Style it comfortably with large inputs.",
+    "STICKY CTA: Add a floating action button (phone/quote) on the bottom right for mobile, or a persistent sidebar tab for desktop.",
+    "VOCABULARY: STRICTLY use 'Aménagement', 'Espace', 'Transformation'. NEVER use 'Travaux' or 'Chantier' (unless referring to 'Chantier propre').",
+    "IMAGES: Use object-cover for all images. Ensure technical images (expertise) are crisp."
+  ],
+  "universal_guidelines": [
+    "Don't make generic centered layouts.",
+    "Create depth through layered design elements with z-index hierarchy.",
+    "Use glass-morphism effects with backdrop filters.",
+    "Every interaction needs micro-animations.",
+    "Use 2-3x more spacing than feels comfortable.",
+    "Subtle grain textures, noise overlays, custom cursors.",
+    "Main agent relies on these image URLs. Missing categories = main agent will use placeholder text which is FORBIDDEN."
+  ]
+}
