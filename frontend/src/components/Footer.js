@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail, ArrowUp } from "lucide-react";
+import { cities } from "@/pages/VilleSEO";
 
 export default function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
@@ -52,14 +53,16 @@ export default function Footer() {
           {/* Services */}
           <div>
             <h4 className="font-heading font-semibold text-sm uppercase tracking-widest text-brand-gold mb-6">
-              Nos Solutions
+              Zones d'Intervention
             </h4>
-            <ul className="space-y-3 text-slate-400 text-sm">
-              <li>Cloisons Vitrées Luxe</li>
-              <li>Cloisons Pleines Acoustiques</li>
-              <li>Murs Mobiles</li>
-              <li>Verrière de Bureau</li>
-              <li>Faux Plafonds</li>
+            <ul className="space-y-3 text-sm">
+              {Object.entries(cities).slice(0, 6).map(([key, city]) => (
+                <li key={key}>
+                  <Link to={`/cloison-amovible/${key}`} className="text-slate-400 hover:text-white transition-colors duration-300">
+                    {city.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 

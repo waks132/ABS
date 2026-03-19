@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Shield, Clock, Blocks, Award, ArrowRight, ChevronRight, Star, Volume2, Maximize2, Eye } from "lucide-react";
 import axios from "axios";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
@@ -160,6 +161,25 @@ export default function Accueil() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* BEFORE / AFTER SLIDER */}
+      <section data-testid="before-after-section" className="py-20 md:py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-12">
+            <p className="text-brand-gold font-heading font-semibold text-sm tracking-[0.2em] uppercase mb-4">Transformation</p>
+            <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-brand-navy mb-4">
+              Avant / Après
+            </h2>
+            <p className="text-slate-500 max-w-2xl">
+              Glissez pour découvrir la transformation spectaculaire de vos espaces avec nos solutions de cloisonnement.
+            </p>
+            <div className="section-divider mt-4" />
+          </motion.div>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={1}>
+            <BeforeAfterSlider />
+          </motion.div>
         </div>
       </section>
 

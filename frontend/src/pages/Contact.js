@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Clock, ArrowRight, ArrowLeft, Check } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 import axios from "axios";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
@@ -71,6 +72,10 @@ export default function Contact() {
 
   return (
     <div data-testid="contact-page">
+      <Helmet>
+        <title>Contact & Devis - ABS Cloison | Cloisons Amovibles Lyon</title>
+        <meta name="description" content="Demandez votre devis gratuit pour des cloisons amovibles haut de gamme. ABS Cloison, spécialiste à Lyon. Réponse sous 48h." />
+      </Helmet>
       {/* HERO */}
       <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
@@ -418,6 +423,32 @@ export default function Contact() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* GOOGLE MAPS */}
+      <section data-testid="google-maps-section" className="bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-16">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-8">
+            <p className="text-brand-gold font-heading font-semibold text-sm tracking-[0.2em] uppercase mb-4">Localisation</p>
+            <h2 className="font-heading font-bold text-2xl md:text-3xl text-brand-navy mb-2">
+              Nous trouver
+            </h2>
+            <p className="text-slate-500 text-sm">642 Route de Lyon, 69480 Anse - Intervention sur toute la région lyonnaise</p>
+          </motion.div>
+          <div className="w-full h-[400px] border border-slate-200">
+            <iframe
+              title="ABS Cloison - Localisation"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2776.8!2d4.7167!3d45.9353!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f4c1c7f3b7c9e7%3A0x0!2s642+Route+de+Lyon%2C+69480+Anse!5e0!3m2!1sfr!2sfr!4v1"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              data-testid="google-maps-embed"
+            />
           </div>
         </div>
       </section>

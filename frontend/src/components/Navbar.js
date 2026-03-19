@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Logo from "./Logo";
 
 const navLinks = [
   { path: "/", label: "Accueil" },
@@ -39,11 +40,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" data-testid="logo-link" className="flex items-center gap-3">
-            <div className={`font-heading font-bold text-xl tracking-tight ${logoColor} transition-colors duration-300`}>
-              <span className="text-brand-gold">ABS</span> CLOISON
-            </div>
-          </Link>
+          <Logo variant={scrolled || !isHome ? "dark" : "light"} />
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-10">
