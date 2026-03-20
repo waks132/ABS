@@ -85,11 +85,13 @@ const cities = {
 
 const services = [
   "Cloisons vitrées bord à bord",
+  "Cloisons vitrées sur allège",
   "Cloisons pleines acoustiques (jusqu'à 50dB)",
+  "Portes coulissantes vitrées",
   "Murs mobiles pour salles de réunion",
-  "Verrières de bureau sur mesure",
-  "Faux plafonds acoustiques",
+  "Phone box et bulles d'isolation",
   "Installation en site occupé",
+  "Intervention partout en France",
 ];
 
 const promises = [

@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Shield, Clock, Blocks, Award, ArrowRight, ChevronRight, Star, Volume2, Maximize2, Eye } from "lucide-react";
+import { Shield, Clock, Blocks, Award, ArrowRight, ChevronRight, Star, Volume2, Maximize2, Eye, PanelTop, DoorOpen, Headphones } from "lucide-react";
 import axios from "axios";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
@@ -32,24 +32,45 @@ const promises = [
 const systems = [
   {
     title: "Cloisons Vitrées Luxe",
-    desc: "Look bord à bord sans montants visibles. Vitrage Stadip Silence pour une transparence et un confort acoustique exceptionnels.",
+    desc: "Look bord à bord sans montants visibles. Vitrage Stadip Silence pour transparence et confort acoustique.",
     image: "https://static.prod-images.emergentagent.com/jobs/4b731054-35b8-4aa7-b551-25e79cfee9fa/images/1507d3bcd194f4e0485d214aafc3a8598d322e4224359a5026bb88d60656f7eb.png",
     icon: Eye,
     tag: "Best-seller",
   },
   {
+    title: "Vitrées sur Allège",
+    desc: "Soubassement plein pour intimité et câblage, partie haute vitrée pour la lumière naturelle.",
+    image: "https://static.prod-images.emergentagent.com/jobs/4b731054-35b8-4aa7-b551-25e79cfee9fa/images/1ac9a27799c98e563545a877cfb31d0d4863c8f0045eeaab1b739722d15d064e.png",
+    icon: PanelTop,
+    tag: "Polyvalent",
+  },
+  {
     title: "Cloisons Pleines Acoustiques",
-    desc: "Finitions haut de gamme en bois et tissu. Performance acoustique jusqu'à 50dB pour une confidentialité absolue.",
+    desc: "Finitions haut de gamme en bois et tissu. Performance acoustique jusqu'à 50dB.",
     image: "https://static.prod-images.emergentagent.com/jobs/4b731054-35b8-4aa7-b551-25e79cfee9fa/images/8058b222ce41d61914c2a04595441fe394564838a8ef1cbc18a196633eee740e.png",
     icon: Volume2,
     tag: "Acoustique",
   },
   {
+    title: "Portes Coulissantes",
+    desc: "Rail apparent ou encastré, soft-close. Fluidité de circulation et élégance architecturale.",
+    image: "https://static.prod-images.emergentagent.com/jobs/4b731054-35b8-4aa7-b551-25e79cfee9fa/images/5c7039b31efd8060bc11f4f3754d788de688a2290ecbd461821889c4bfdb3f2f.png",
+    icon: DoorOpen,
+    tag: "Élégance",
+  },
+  {
     title: "Murs Mobiles",
-    desc: "Solutions de séparation dynamique pour salles de réunion. Modularité maximale pour des espaces évolutifs.",
+    desc: "Séparation dynamique pour salles de réunion. Modularité maximale pour espaces évolutifs.",
     image: "https://static.prod-images.emergentagent.com/jobs/4b731054-35b8-4aa7-b551-25e79cfee9fa/images/fe25494c308e732490812b3434230a9801714450e42f1048a92cddb060b80039.png",
     icon: Maximize2,
-    tag: "Flexible",
+    tag: "Modulable",
+  },
+  {
+    title: "Phone Box & Bulles d'Isolation",
+    desc: "Cabines acoustiques plug & play. Concentration et confidentialité en open space.",
+    image: "https://static.prod-images.emergentagent.com/jobs/4b731054-35b8-4aa7-b551-25e79cfee9fa/images/06cbd343ec18aa745dc4c6c63b71d0e663c5ced31df4f49d636e80b2dcaaa9e8.png",
+    icon: Headphones,
+    tag: "Tendance",
   },
 ];
 
@@ -104,7 +125,7 @@ export default function Accueil() {
                 <span className="font-accent italic text-brand-gold">l'exigence</span> de l'acoustique
               </motion.h1>
               <motion.p variants={fadeUp} custom={2} className="text-slate-300 text-lg md:text-xl leading-relaxed mb-10 max-w-xl">
-                Spécialiste de la vente et pose de cloisons amovibles haut de gamme en région lyonnaise.
+                Spécialiste de la vente et pose de cloisons amovibles haut de gamme. Région lyonnaise et partout en France.
               </motion.p>
               <motion.div variants={fadeUp} custom={3} className="flex flex-col sm:flex-row gap-4">
                 <Link
@@ -187,14 +208,17 @@ export default function Accueil() {
       <section data-testid="systems-preview-section" className="py-20 md:py-32 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-16">
-            <p className="text-brand-gold font-heading font-semibold text-sm tracking-[0.2em] uppercase mb-4">Nos Solutions</p>
-            <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-brand-navy mb-6">
+            <p className="text-brand-gold font-heading font-semibold text-sm tracking-[0.2em] uppercase mb-4">Nos 6 Solutions</p>
+            <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-brand-navy mb-4">
               Des systèmes d'exception
             </h2>
+            <p className="text-slate-500 max-w-2xl mb-4">
+              Région lyonnaise et intervention partout en France.
+            </p>
             <div className="section-divider" />
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {systems.map((sys, idx) => (
               <motion.div
                 key={idx}

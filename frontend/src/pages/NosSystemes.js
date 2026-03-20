@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Eye, Volume2, Maximize2, ArrowRight, Check, ChevronRight } from "lucide-react";
+import { Eye, Volume2, Maximize2, ArrowRight, Check, ChevronRight, PanelTop, DoorOpen, Headphones } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -33,6 +34,30 @@ const systems = [
     ],
   },
   {
+    id: "allege",
+    icon: PanelTop,
+    title: "Vitrées sur Allège",
+    subtitle: "L'équilibre parfait",
+    tag: "Polyvalent",
+    image: "https://static.prod-images.emergentagent.com/jobs/4b731054-35b8-4aa7-b551-25e79cfee9fa/images/1ac9a27799c98e563545a877cfb31d0d4863c8f0045eeaab1b739722d15d064e.png",
+    realPhoto: "https://customer-assets.emergentagent.com/job_4b731054-35b8-4aa7-b551-25e79cfee9fa/artifacts/7qtav35z_IMG-20260318-WA0021.jpg",
+    description: "La cloison vitrée sur allège combine un soubassement plein pour la discrétion et le passage de câbles, avec un vitrage en partie haute pour la lumière naturelle. La solution idéale pour les open spaces et bureaux partagés.",
+    features: [
+      "Soubassement plein pour intimité et câblage",
+      "Partie haute vitrée pour la luminosité",
+      "Hauteur d'allège personnalisable (80 à 120cm)",
+      "Finitions allège : stratifié, tissu, bois",
+      "Compatibilité stores et films décoratifs",
+      "Excellente intégration des prises et réseaux",
+    ],
+    specs: [
+      { label: "Affaiblissement acoustique", value: "Jusqu'à 45dB" },
+      { label: "Hauteur allège", value: "80 à 120cm" },
+      { label: "Hauteur totale max", value: "3.50m" },
+      { label: "Intégration", value: "Prises & réseaux" },
+    ],
+  },
+  {
     id: "pleines",
     icon: Volume2,
     title: "Cloisons Pleines Acoustiques",
@@ -57,11 +82,35 @@ const systems = [
     ],
   },
   {
+    id: "coulissantes",
+    icon: DoorOpen,
+    title: "Portes Coulissantes",
+    subtitle: "Le geste architectural",
+    tag: "Élégance",
+    image: "https://static.prod-images.emergentagent.com/jobs/4b731054-35b8-4aa7-b551-25e79cfee9fa/images/5c7039b31efd8060bc11f4f3754d788de688a2290ecbd461821889c4bfdb3f2f.png",
+    realPhoto: "https://customer-assets.emergentagent.com/job_4b731054-35b8-4aa7-b551-25e79cfee9fa/artifacts/gn7jonju_IMG-20260318-WA0011.jpg",
+    description: "Nos portes coulissantes vitrées apportent une fluidité remarquable à la circulation dans vos espaces. Rail apparent ou encastré, simple ou double vantail : chaque configuration s'adapte à votre architecture intérieure.",
+    features: [
+      "Rail apparent ou encastré au choix",
+      "Simple ou double vantail",
+      "Système de fermeture soft-close",
+      "Vitrage sécurit trempé ou feuilleté",
+      "Poignées design intégrées",
+      "Compatible systèmes de contrôle d'accès",
+    ],
+    specs: [
+      { label: "Affaiblissement acoustique", value: "Jusqu'à 38dB" },
+      { label: "Largeur passage", value: "80 à 180cm" },
+      { label: "Poids max vantail", value: "120kg" },
+      { label: "Système", value: "Soft-close intégré" },
+    ],
+  },
+  {
     id: "mobiles",
     icon: Maximize2,
     title: "Murs Mobiles",
     subtitle: "La flexibilité absolue",
-    tag: "Innovation",
+    tag: "Modulable",
     image: "https://static.prod-images.emergentagent.com/jobs/4b731054-35b8-4aa7-b551-25e79cfee9fa/images/fe25494c308e732490812b3434230a9801714450e42f1048a92cddb060b80039.png",
     realPhoto: "https://customer-assets.emergentagent.com/job_4b731054-35b8-4aa7-b551-25e79cfee9fa/artifacts/gn7jonju_IMG-20260318-WA0011.jpg",
     description: "Nos murs mobiles offrent une solution dynamique pour transformer instantanément vos espaces. Idéals pour salles de réunion, centres de formation et espaces événementiels, ils allient modularité et performance acoustique.",
@@ -80,11 +129,40 @@ const systems = [
       { label: "Opération", value: "Mono-opérateur" },
     ],
   },
+  {
+    id: "phonebox",
+    icon: Headphones,
+    title: "Phone Box & Bulles d'Isolation",
+    subtitle: "L'intimité instantanée",
+    tag: "Tendance",
+    image: "https://static.prod-images.emergentagent.com/jobs/4b731054-35b8-4aa7-b551-25e79cfee9fa/images/06cbd343ec18aa745dc4c6c63b71d0e663c5ced31df4f49d636e80b2dcaaa9e8.png",
+    realPhoto: "https://customer-assets.emergentagent.com/job_4b731054-35b8-4aa7-b551-25e79cfee9fa/artifacts/kk51kuyc_IMG-20260318-WA0015.jpg",
+    description: "Nos cabines acoustiques et bulles d'isolation offrent un espace de concentration et de confidentialité au coeur de l'open space. De la phone box individuelle à la cabine de réunion 4 places, trouvez la solution adaptée à votre besoin.",
+    features: [
+      "Isolation acoustique haute performance",
+      "Ventilation silencieuse intégrée",
+      "Éclairage LED réglable",
+      "Prises électriques et USB intégrées",
+      "Configurations 1, 2 ou 4 places",
+      "Aucune modification structurelle nécessaire",
+    ],
+    specs: [
+      { label: "Affaiblissement acoustique", value: "Jusqu'à 35dB" },
+      { label: "Configurations", value: "1 à 4 places" },
+      { label: "Installation", value: "Plug & Play" },
+      { label: "Ventilation", value: "Silencieuse intégrée" },
+    ],
+  },
 ];
 
 export default function NosSystemes() {
   return (
     <div data-testid="nos-systemes-page">
+      <Helmet>
+        <title>Nos Systèmes de Cloisons | ABS Cloison - Solutions Haut de Gamme</title>
+        <meta name="description" content="Découvrez nos 6 systèmes de cloisons amovibles : vitrées luxe, sur allège, pleines acoustiques, portes coulissantes, murs mobiles et phone box. Devis gratuit." />
+      </Helmet>
+
       {/* HERO */}
       <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
@@ -93,12 +171,30 @@ export default function NosSystemes() {
               Nos Systèmes
             </motion.p>
             <motion.h1 variants={fadeUp} custom={1} className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-brand-navy mb-6 leading-tight">
-              Solutions de<br />cloisonnement<br /><span className="font-accent italic text-brand-gold">haut de gamme</span>
+              6 solutions de<br />cloisonnement<br /><span className="font-accent italic text-brand-gold">haut de gamme</span>
             </motion.h1>
             <motion.p variants={fadeUp} custom={2} className="text-slate-500 text-lg max-w-2xl leading-relaxed">
-              Chaque système est conçu pour fusionner esthétique architecturale et performance technique. Du vitrage luxe à l'acoustique haute performance.
+              De la cloison vitrée bord à bord à la phone box acoustique, chaque système fusionne esthétique architecturale et performance technique. Intervention partout en France.
             </motion.p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* QUICK NAV */}
+      <section className="py-6 bg-white border-b border-slate-100 sticky top-20 z-30">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+          <div className="flex flex-wrap gap-2">
+            {systems.map((sys) => (
+              <a
+                key={sys.id}
+                href={`#${sys.id}`}
+                data-testid={`quick-nav-${sys.id}`}
+                className="text-xs font-heading font-semibold tracking-wider uppercase px-4 py-2 bg-slate-50 text-slate-500 hover:bg-brand-navy hover:text-white transition-all duration-300"
+              >
+                {sys.title.split(" ").slice(0, 2).join(" ")}
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -106,11 +202,12 @@ export default function NosSystemes() {
       {systems.map((sys, idx) => (
         <section
           key={sys.id}
+          id={sys.id}
           data-testid={`system-detail-${sys.id}`}
-          className={`py-20 md:py-32 ${idx % 2 === 0 ? "bg-white" : "bg-slate-50"}`}
+          className={`py-20 md:py-32 ${idx % 2 === 0 ? "bg-white" : "bg-slate-50"} scroll-mt-32`}
         >
           <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
-            <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center ${idx % 2 === 1 ? "lg:flex-row-reverse" : ""}`}>
+            <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center`}>
               {/* Image Side */}
               <motion.div
                 initial="hidden"
@@ -124,7 +221,7 @@ export default function NosSystemes() {
                     <img src={sys.image} alt={sys.title} className="w-full h-full object-cover" />
                   </div>
                   <div className="img-zoom aspect-[16/9] overflow-hidden">
-                    <img src={sys.realPhoto} alt={`${sys.title} - réalisation`} className="w-full h-full object-cover" />
+                    <img src={sys.realPhoto} alt={`${sys.title} - réalisation ABS Cloison`} className="w-full h-full object-cover" />
                   </div>
                 </div>
               </motion.div>
@@ -153,7 +250,6 @@ export default function NosSystemes() {
                   {sys.description}
                 </motion.p>
 
-                {/* Features */}
                 <motion.div variants={fadeUp} custom={4} className="space-y-3 mb-8">
                   {sys.features.map((f, i) => (
                     <div key={i} className="flex items-start gap-3">
@@ -163,7 +259,6 @@ export default function NosSystemes() {
                   ))}
                 </motion.div>
 
-                {/* Specs */}
                 <motion.div variants={fadeUp} custom={5} className="grid grid-cols-2 gap-4 mb-8">
                   {sys.specs.map((spec, i) => (
                     <div key={i} className="p-4 bg-slate-50 border-l-2 border-brand-gold">
@@ -196,7 +291,7 @@ export default function NosSystemes() {
               Vous ne savez pas quel système choisir ?
             </motion.h2>
             <motion.p variants={fadeUp} custom={1} className="text-slate-400 text-lg mb-10">
-              Nos experts vous conseillent gratuitement pour trouver la solution idéale pour votre projet.
+              Nos experts vous conseillent gratuitement pour trouver la solution idéale. Intervention dans toute la France.
             </motion.p>
             <motion.div variants={fadeUp} custom={2}>
               <Link

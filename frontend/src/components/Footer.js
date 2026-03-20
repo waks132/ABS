@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail, ArrowUp } from "lucide-react";
-import { cities } from "@/pages/VilleSEO";
 
 export default function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
@@ -16,7 +15,7 @@ export default function Footer() {
               <span className="text-brand-gold">ABS</span> CLOISON
             </div>
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
-              L'excellence dans l'aménagement d'espaces professionnels. Cloisons amovibles haut de gamme, installation en site occupé.
+              L'excellence dans l'aménagement d'espaces professionnels. Cloisons amovibles haut de gamme. Région lyonnaise et partout en France.
             </p>
             <div className="section-divider mb-6" />
             <p className="text-xs text-slate-500 uppercase tracking-widest">
@@ -50,19 +49,18 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Zones */}
           <div>
             <h4 className="font-heading font-semibold text-sm uppercase tracking-widest text-brand-gold mb-6">
-              Zones d'Intervention
+              Nos Solutions
             </h4>
             <ul className="space-y-3 text-sm">
-              {Object.entries(cities).slice(0, 6).map(([key, city]) => (
-                <li key={key}>
-                  <Link to={`/cloison-amovible/${key}`} className="text-slate-400 hover:text-white transition-colors duration-300">
-                    {city.name}
-                  </Link>
-                </li>
-              ))}
+              <li className="text-slate-400">Cloisons Vitrées Luxe</li>
+              <li className="text-slate-400">Vitrées sur Allège</li>
+              <li className="text-slate-400">Cloisons Pleines Acoustiques</li>
+              <li className="text-slate-400">Portes Coulissantes</li>
+              <li className="text-slate-400">Murs Mobiles</li>
+              <li className="text-slate-400">Phone Box & Bulles d'Isolation</li>
             </ul>
           </div>
 
@@ -104,9 +102,15 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-slate-500 text-xs">
-            &copy; {new Date().getFullYear()} ABS Cloison. Tous droits réservés. Garantie décennale.
-          </p>
+          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
+            <p className="text-slate-500 text-xs">
+              &copy; {new Date().getFullYear()} ABS Cloison. Tous droits réservés. Garantie décennale.
+            </p>
+            <span className="hidden md:inline text-slate-700">|</span>
+            <p className="text-slate-500 text-xs">
+              Région lyonnaise &bull; Intervention partout en France
+            </p>
+          </div>
           <button
             onClick={scrollToTop}
             data-testid="scroll-to-top"

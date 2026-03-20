@@ -194,6 +194,30 @@ async def seed_data():
                 "image": "https://static.prod-images.emergentagent.com/jobs/4b731054-35b8-4aa7-b551-25e79cfee9fa/images/1507d3bcd194f4e0485d214aafc3a8598d322e4224359a5026bb88d60656f7eb.png",
                 "lieu": "Caluire-et-Cuire"
             },
+            {
+                "id": str(uuid.uuid4()),
+                "titre": "Cloisons Vitrées sur Allège",
+                "categorie": "Bureaux",
+                "description": "Installation de cloisons vitrées sur allège avec soubassement stratifié pour le passage des câbles et prises. Partie haute vitrée pour la luminosité naturelle.",
+                "image": "https://static.prod-images.emergentagent.com/jobs/4b731054-35b8-4aa7-b551-25e79cfee9fa/images/1ac9a27799c98e563545a877cfb31d0d4863c8f0045eeaab1b739722d15d064e.png",
+                "lieu": "Lyon 3ème"
+            },
+            {
+                "id": str(uuid.uuid4()),
+                "titre": "Portes Coulissantes Vitrées",
+                "categorie": "Bureaux",
+                "description": "Système de portes coulissantes vitrées avec rail encastré et fermeture soft-close. Poignées design intégrées et vitrage sécurit.",
+                "image": "https://static.prod-images.emergentagent.com/jobs/4b731054-35b8-4aa7-b551-25e79cfee9fa/images/5c7039b31efd8060bc11f4f3754d788de688a2290ecbd461821889c4bfdb3f2f.png",
+                "lieu": "Vaulx-en-Velin"
+            },
+            {
+                "id": str(uuid.uuid4()),
+                "titre": "Phone Box Open Space",
+                "categorie": "Bureaux",
+                "description": "Installation de 6 cabines acoustiques individuelles dans un open space de 500m². Ventilation silencieuse, éclairage LED et prises USB intégrées.",
+                "image": "https://static.prod-images.emergentagent.com/jobs/4b731054-35b8-4aa7-b551-25e79cfee9fa/images/06cbd343ec18aa745dc4c6c63b71d0e663c5ced31df4f49d636e80b2dcaaa9e8.png",
+                "lieu": "Saint-Priest"
+            },
         ]
         await db.portfolio.insert_many(portfolio)
         logger.info("Seeded portfolio")
