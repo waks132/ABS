@@ -21,7 +21,7 @@ function ScrollToTop() {
 function App() {
   return (
     <HelmetProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL || "/"}>
         <ScrollToTop />
         <Navbar />
         <main>
