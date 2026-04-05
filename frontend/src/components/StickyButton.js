@@ -3,7 +3,7 @@ import { Phone, X, Ruler } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+const API = process.env.REACT_APP_BACKEND_URL ? `${process.env.REACT_APP_BACKEND_URL}/api` : null;
 
 export default function StickyButton() {
   const [open, setOpen] = useState(false);
@@ -15,6 +15,10 @@ export default function StickyButton() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!phone.trim()) return;
+    if (!API) {
+      alert("Service temporairement indisponible. Veuillez nous appeler ou reessayer plus tard.");
+      return;
+    }
     setLoading(true);
     try {
       await axios.post(`${API}/rappel`, { telephone: phone, nom: nom || undefined });

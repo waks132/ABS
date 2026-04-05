@@ -11,12 +11,12 @@ const expertiseAreas = [
   {
     icon: Volume2,
     title: "Performance Acoustique",
-    description: "Nos systèmes sont testés et certifiés selon les normes NF EN ISO 140-3. L'indice d'affaiblissement acoustique Rw peut atteindre 50dB pour nos cloisons pleines et 42dB pour nos vitrées.",
+    description: "Nous portons une attention particulière à l'isolation phonique de vos espaces. Nos cloisons pleines et vitrées intègrent des procédés spécifiques pour réduire la transmission du bruit et préserver la confidentialité.",
     details: [
-      { label: "Cloisons Pleines", value: "Rw jusqu'à 50dB", highlight: true },
-      { label: "Cloisons Vitrées", value: "Rw jusqu'à 42dB", highlight: false },
-      { label: "Murs Mobiles", value: "Rw jusqu'à 56dB", highlight: true },
-      { label: "Norme", value: "NF EN ISO 140-3", highlight: false },
+      { label: "Cloisons Pleines", value: "Isolation maximale", highlight: true },
+      { label: "Cloisons Vitrées", value: "Confort préservé", highlight: false },
+      { label: "Joints creux", value: "Finition étanche", highlight: false },
+      { label: "Double vitrage", value: "Amélioration phonique", highlight: true },
     ],
   },
   {
@@ -70,15 +70,7 @@ const processSteps = [
   },
 ];
 
-const acousticScale = [
-  { db: "25dB", label: "Chuchotement", color: "bg-green-200" },
-  { db: "35dB", label: "Bureau calme", color: "bg-green-300" },
-  { db: "42dB", label: "Cloison vitrée ABS", color: "bg-brand-gold" },
-  { db: "50dB", label: "Cloison pleine ABS", color: "bg-brand-gold" },
-  { db: "56dB", label: "Mur mobile ABS", color: "bg-brand-gold" },
-  { db: "60dB", label: "Conversation normale", color: "bg-orange-300" },
-  { db: "80dB", label: "Trafic routier", color: "bg-red-300" },
-];
+
 
 export default function Expertise() {
   return (
@@ -100,47 +92,7 @@ export default function Expertise() {
         </div>
       </section>
 
-      {/* ACOUSTIC SCALE */}
-      <section data-testid="acoustic-scale" className="py-20 md:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-12">
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-brand-navy mb-4">
-              Échelle Acoustique
-            </h2>
-            <p className="text-slate-500 max-w-2xl">
-              Comprenez l'impact de nos solutions sur le confort sonore de vos espaces.
-            </p>
-            <div className="section-divider mt-4" />
-          </motion.div>
 
-          <div className="space-y-3">
-            {acousticScale.map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                custom={idx}
-                className="flex items-center gap-4"
-              >
-                <span className="w-14 text-right font-heading font-bold text-brand-navy text-sm">{item.db}</span>
-                <div className="flex-1 h-10 bg-slate-100 relative overflow-hidden rounded-sm">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${((idx + 1) / acousticScale.length) * 100}%` }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: idx * 0.1 }}
-                    className={`h-full ${item.color} flex items-center justify-end pr-3`}
-                  >
-                    <span className="text-xs font-semibold text-brand-navy whitespace-nowrap">{item.label}</span>
-                  </motion.div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* EXPERTISE AREAS */}
       {expertiseAreas.map((area, idx) => (

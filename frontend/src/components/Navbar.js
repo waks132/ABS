@@ -30,17 +30,15 @@ export default function Navbar() {
 
   const navBg = scrolled || !isHome ? "glass-nav" : "glass-nav-transparent";
   const textColor = scrolled || !isHome ? "text-brand-navy" : "text-white";
-  const logoColor = scrolled || !isHome ? "text-brand-navy" : "text-white";
-
   return (
     <nav
       data-testid="main-navbar"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navBg}`}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-[102px]">
           {/* Logo */}
-          <Logo variant={scrolled || !isHome ? "dark" : "light"} />
+          <Logo variant={scrolled || !isHome ? "dark" : "light"} className="mr-3 md:mr-5" />
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-10">

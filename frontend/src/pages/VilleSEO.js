@@ -67,7 +67,7 @@ const cities = {
     name: "Saint-Priest",
     region: "Rhône (69)",
     codePostal: "69800",
-    description: "ABS Cloison réalise des aménagements de bureaux haut de gamme à Saint-Priest, dans les zones d'activité et parcs technologiques de l'Est lyonnais. Cloisons vitrées, acoustiques et murs mobiles pour vos espaces professionnels.",
+    description: "ABS Cloison réalise des aménagements de bureaux haut de gamme à Saint-Priest, dans les zones d'activité et parcs technologiques de l'Est lyonnais. Cloisons vitrées et acoustiques pour vos espaces professionnels.",
     specificContent: "Saint-Priest, dans l'Est lyonnais, concentre de nombreuses zones d'activité et entreprises industrielles et tertiaires. ABS Cloison intervient sur l'ensemble de la commune pour des installations de cloisons amovibles sur mesure.",
     quartiers: ["Mi-Plaine", "Berliet", "Zone Industrielle", "Centre"],
     distance: "35 km",
@@ -86,9 +86,9 @@ const cities = {
 const services = [
   "Cloisons vitrées bord à bord",
   "Cloisons vitrées sur allège",
-  "Cloisons pleines acoustiques (jusqu'à 50dB)",
+  "Cloisons pleines acoustiques",
   "Portes coulissantes vitrées",
-  "Murs mobiles pour salles de réunion",
+
   "Phone box et bulles d'isolation",
   "Installation en site occupé",
   "Intervention partout en France",
@@ -118,7 +118,7 @@ export default function VilleSEO() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "ABS Cloison",
-    "description": `Pose de cloisons amovibles haut de gamme à ${city.name}. Cloisons vitrées, acoustiques et murs mobiles.`,
+    "description": `Pose de cloisons amovibles haut de gamme à ${city.name}. Cloisons vitrées et acoustiques.`,
     "url": `https://abscloison.fr/cloison-amovible-${ville}`,
     "telephone": "+33753801260",
     "email": "abscloison@gmail.com",
@@ -147,7 +147,7 @@ export default function VilleSEO() {
       <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-brand-navy relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <img
-            src="https://static.prod-images.emergentagent.com/jobs/4b731054-35b8-4aa7-b551-25e79cfee9fa/images/83edbda040d467ca43b00584687d301b51d1431ae132839ffc7f7cbae0bdfff7.png"
+            src="/systems/cta-bureau-transforme.png"
             alt="" className="w-full h-full object-cover"
           />
         </div>

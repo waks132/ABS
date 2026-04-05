@@ -1,24 +1,25 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Shield, Clock, Blocks, Award, ArrowRight, ChevronRight, Star, Volume2, Maximize2, Eye, PanelTop, DoorOpen, Headphones } from "lucide-react";
+import { Shield, Clock, Blocks, Award, ArrowRight, ChevronRight, Star, Volume2, Eye, PanelTop, DoorOpen, Headphones } from "lucide-react";
 import axios from "axios";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import ClientsCarousel from "@/components/ClientsCarousel";
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+const API = process.env.REACT_APP_BACKEND_URL ? `${process.env.REACT_APP_BACKEND_URL}/api` : null;
 
 const heroSlides = [
   {
-    image: "https://static.prod-images.emergentagent.com/jobs/4b731054-35b8-4aa7-b551-25e79cfee9fa/images/1507d3bcd194f4e0485d214aafc3a8598d322e4224359a5026bb88d60656f7eb.png",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2560",
     alt: "Cloisons vitrées haut de gamme"
   },
   {
-    image: "https://customer-assets.emergentagent.com/job_4b731054-35b8-4aa7-b551-25e79cfee9fa/artifacts/kk51kuyc_IMG-20260318-WA0015.jpg",
-    alt: "Installation de cloisons vitrées"
+    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=2560",
+    alt: "Design architectural et aménagement d'espace"
   },
   {
-    image: "https://static.prod-images.emergentagent.com/jobs/4b731054-35b8-4aa7-b551-25e79cfee9fa/images/83edbda040d467ca43b00584687d301b51d1431ae132839ffc7f7cbae0bdfff7.png",
-    alt: "Transformation d'espace de bureau"
+    image: "/branding/cloisons-vitrees.jpg",
+    alt: "Cloisons vitrées dépolies et cadres noirs"
   },
 ];
 
@@ -33,53 +34,213 @@ const systems = [
   {
     title: "Cloisons Vitrées Luxe",
     desc: "Look bord à bord sans montants visibles. Vitrage Stadip Silence pour transparence et confort acoustique.",
-    image: "https://static.prod-images.emergentagent.com/jobs/4b731054-35b8-4aa7-b551-25e79cfee9fa/images/1507d3bcd194f4e0485d214aafc3a8598d322e4224359a5026bb88d60656f7eb.png",
+    image: "/systems/cloisons-vitrees-luxe.png",
     icon: Eye,
     tag: "Best-seller",
   },
   {
     title: "Vitrées sur Allège",
     desc: "Soubassement plein pour intimité et câblage, partie haute vitrée pour la lumière naturelle.",
-    image: "https://static.prod-images.emergentagent.com/jobs/4b731054-35b8-4aa7-b551-25e79cfee9fa/images/1ac9a27799c98e563545a877cfb31d0d4863c8f0045eeaab1b739722d15d064e.png",
+    image: "/systems/cloisons-allege.png",
     icon: PanelTop,
     tag: "Polyvalent",
   },
   {
     title: "Cloisons Pleines Acoustiques",
-    desc: "Finitions haut de gamme en bois et tissu. Performance acoustique jusqu'à 50dB.",
-    image: "https://static.prod-images.emergentagent.com/jobs/4b731054-35b8-4aa7-b551-25e79cfee9fa/images/8058b222ce41d61914c2a04595441fe394564838a8ef1cbc18a196633eee740e.png",
+    desc: "Finitions haut de gamme en bois et tissu. Isolation phonique optimale.",
+    image: "/systems/cloisons-pleines-acoustiques.png",
     icon: Volume2,
     tag: "Acoustique",
   },
   {
     title: "Portes Coulissantes",
     desc: "Rail apparent ou encastré, soft-close. Fluidité de circulation et élégance architecturale.",
-    image: "https://static.prod-images.emergentagent.com/jobs/4b731054-35b8-4aa7-b551-25e79cfee9fa/images/5c7039b31efd8060bc11f4f3754d788de688a2290ecbd461821889c4bfdb3f2f.png",
+    image: "/systems/portes-coulissantes.png",
     icon: DoorOpen,
     tag: "Élégance",
   },
-  {
-    title: "Murs Mobiles",
-    desc: "Séparation dynamique pour salles de réunion. Modularité maximale pour espaces évolutifs.",
-    image: "https://static.prod-images.emergentagent.com/jobs/4b731054-35b8-4aa7-b551-25e79cfee9fa/images/fe25494c308e732490812b3434230a9801714450e42f1048a92cddb060b80039.png",
-    icon: Maximize2,
-    tag: "Modulable",
-  },
+
   {
     title: "Phone Box & Bulles d'Isolation",
     desc: "Cabines acoustiques plug & play. Concentration et confidentialité en open space.",
-    image: "https://static.prod-images.emergentagent.com/jobs/4b731054-35b8-4aa7-b551-25e79cfee9fa/images/06cbd343ec18aa745dc4c6c63b71d0e663c5ced31df4f49d636e80b2dcaaa9e8.png",
+    image: "/systems/phone-box.png",
     icon: Headphones,
     tag: "Tendance",
   },
 ];
 
 const stats = [
-  { value: "15+", label: "Années d'expérience" },
+  { value: "30+", label: "Années d'expérience" },
   { value: "500+", label: "Projets réalisés" },
   { value: "98%", label: "Clients satisfaits" },
   { value: "48h", label: "Délai de réponse" },
 ];
+
+const transformationHighlights = [
+  {
+    icon: Shield,
+    title: "Circulation sécurisée",
+    desc: "Cloisons, flux et points d'accès se lisent tout de suite dans les espaces aménagés.",
+  },
+  {
+    icon: Clock,
+    title: "Intervention maîtrisée",
+    desc: "Nos poses sont pensées pour les sites occupés, avec un chantier propre et des délais tenus.",
+  },
+];
+
+const featuredPortfolioItem = {
+  img: "/portfolio/IMG-20260318-WA0000.jpg",
+  title: "Îlots de travail vitrés",
+  lieu: "Lyon",
+  tag: "Bureaux",
+  desc: "Transparence, cadres noirs et composition sur mesure pour structurer les équipes.",
+};
+
+featuredPortfolioItem.title = "\u00celots vitr\u00e9s";
+featuredPortfolioItem.desc = "Transparence, cadres noirs et composition sur mesure pour structurer les \u00e9quipes.";
+
+const portfolioPreviewItems = [
+  {
+    img: "/portfolio/acces-securise.jpg",
+    title: "Accès sécurisés intégrés",
+    lieu: "Contrôle d'accès",
+    tag: "Sécurité",
+    desc: "Poignée électronique ASSA ABLOY et circulation contrôlée dans les zones sensibles.",
+  },
+  { img: "/portfolio/VID-20260318-WA0003.mp4", title: "Bureaux de direction", lieu: "Vidéo chantier", tag: "Finition" },
+  { img: "/portfolio/IMG-20260318-WA0021.jpg", title: "Profilés blancs", lieu: "Anse", tag: "Préparation" },
+  { img: "/portfolio/IMG-20260318-WA0005.jpg", title: "Structure aluminium", lieu: "Paris", tag: "Pose" },
+  { img: "/portfolio/IMG-20260318-WA0006.jpg", title: "Délimitation", lieu: "Marseille", tag: "Plateau" },
+  { img: "/portfolio/IMG-20260318-WA0007.jpg", title: "Assemblage précis", lieu: "Grenoble", tag: "Technique" },
+  { img: "/portfolio/IMG-20260318-WA0009.jpg", title: "Lignes épurées", lieu: "Annecy", tag: "Modulaire" },
+  { img: "/portfolio/IMG-20260318-WA0008.jpg", title: "Passage vitré", lieu: "Lyon", tag: "Circulation" },
+  { img: "/portfolio/IMG-20260318-WA0011.jpg", title: "Pose en cours", lieu: "Chantier", tag: "Réalisation" },
+];
+
+portfolioPreviewItems[0] = {
+  img: "/portfolio/acces-securise.jpg",
+  title: "Acc\u00e8s s\u00e9curis\u00e9s int\u00e9gr\u00e9s",
+  lieu: "Contr\u00f4le d'acc\u00e8s",
+  tag: "S\u00e9curit\u00e9",
+  desc: "Poign\u00e9e \u00e9lectronique ASSA ABLOY et circulation contr\u00f4l\u00e9e dans les zones sensibles.",
+};
+portfolioPreviewItems[1] = {
+  img: "/portfolio/VID-20260318-WA0003.mp4",
+  title: "Espace d\u00e9di\u00e9",
+  lieu: "Vid\u00e9o chantier",
+  tag: "Agencement",
+};
+portfolioPreviewItems[2] = { img: "/portfolio/IMG-20260318-WA0021.jpg", title: "Profil\u00e9s blancs", lieu: "Anse", tag: "Pr\u00e9paration" };
+portfolioPreviewItems[3] = { img: "/portfolio/IMG-20260318-WA0005.jpg", title: "Structure aluminium", lieu: "Paris", tag: "Pose" };
+portfolioPreviewItems[4] = { img: "/portfolio/IMG-20260318-WA0006.jpg", title: "D\u00e9limitation", lieu: "Marseille", tag: "Plateau" };
+portfolioPreviewItems[5] = { img: "/portfolio/IMG-20260318-WA0007.jpg", title: "Assemblage pr\u00e9cis", lieu: "Grenoble", tag: "Technique" };
+portfolioPreviewItems[6] = { img: "/portfolio/IMG-20260318-WA0009.jpg", title: "Lignes \u00e9pur\u00e9es", lieu: "Annecy", tag: "Modulaire" };
+portfolioPreviewItems[7] = { img: "/portfolio/IMG-20260318-WA0008.jpg", title: "Passage vitr\u00e9", lieu: "Lyon", tag: "Circulation" };
+portfolioPreviewItems[8] = { img: "/portfolio/IMG-20260318-WA0011.jpg", title: "Pose en cours", lieu: "Chantier", tag: "R\u00e9alisation" };
+
+const [
+  securityPortfolioItem,
+  videoPortfolioItem,
+  whiteProfilesPortfolioItem,
+  ,
+  ,
+  ,
+  cleanLinesPortfolioItem,
+  passagePortfolioItem,
+  inProgressPortfolioItem,
+] = portfolioPreviewItems;
+
+videoPortfolioItem.desc = "Vue chantier d'un espace d\u00e9di\u00e9 en cours de finition.";
+const corridorPortfolioItem = {
+  img: "/portfolio/couloir-vitres-20260331.jpg",
+  title: "Couloir vitr\u00e9",
+  lieu: "Perspective",
+  tag: "Circulation",
+};
+
+const supportingPortfolioItems = [videoPortfolioItem];
+const editorialPortfolioTiles = [
+  securityPortfolioItem,
+  corridorPortfolioItem,
+  whiteProfilesPortfolioItem,
+  cleanLinesPortfolioItem,
+  passagePortfolioItem,
+  inProgressPortfolioItem,
+];
+
+const portfolioTagClass =
+  "inline-flex rounded-full bg-brand-gold px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-white shadow-[0_12px_24px_rgba(15,23,42,0.18)]";
+const portfolioMetaClass =
+  "mt-4 text-[11px] font-semibold uppercase tracking-[0.26em] text-[#e9d4a0] [text-shadow:0_1px_2px_rgba(2,6,23,0.95)]";
+const portfolioTitleClass =
+  "mt-2 font-heading font-bold leading-tight text-white [text-shadow:0_1px_2px_rgba(2,6,23,1),0_10px_24px_rgba(2,6,23,0.26)]";
+const portfolioDescClass =
+  "mt-3 max-w-md text-sm font-medium leading-relaxed text-white/92 [text-shadow:0_1px_2px_rgba(2,6,23,0.96)]";
+const portfolioFeatureOverlayClass =
+  "absolute inset-0 bg-gradient-to-t from-brand-navy/84 via-brand-navy/22 via-45% to-transparent";
+const portfolioTileTagClass =
+  "text-[10px] font-semibold uppercase tracking-[0.22em] text-brand-gold";
+
+function PortfolioMedia({ item, className = "" }) {
+  return item.img.endsWith(".mp4") ? (
+    <video src={item.img} autoPlay loop muted playsInline className={className} />
+  ) : (
+    <img src={item.img} alt={item.title} className={className} />
+  );
+}
+
+function PortfolioFeaturePanel({
+  item,
+  testId,
+  className = "",
+  minHeightClass = "min-h-[320px] md:min-h-[380px]",
+  mediaClassName = "",
+  titleClassName = "text-[1.55rem] md:text-[1.8rem]",
+}) {
+  return (
+    <article className={className}>
+      <div
+        className={`portfolio-item group relative overflow-hidden rounded-[32px] bg-slate-100 ring-1 ring-slate-200/70 ${minHeightClass}`}
+        data-testid={testId}
+      >
+        <PortfolioMedia
+          item={item}
+          className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03] ${mediaClassName}`}
+        />
+        <div className={portfolioFeatureOverlayClass} />
+        <div className="absolute inset-x-0 bottom-0 px-6 py-6 md:px-8 md:py-8">
+          <div className="max-w-[26rem] text-white subpixel-antialiased">
+            <span className={portfolioTagClass}>{item.tag}</span>
+            <p className={portfolioMetaClass}>{item.lieu}</p>
+            <h4 className={`${portfolioTitleClass} ${titleClassName}`}>{item.title}</h4>
+            {item.desc && <p className={portfolioDescClass}>{item.desc}</p>}
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function PortfolioEditorialTile({ item, testId, mediaClassName = "" }) {
+  return (
+    <article data-testid={testId} className="group">
+      <div className="overflow-hidden rounded-[26px] bg-slate-100 ring-1 ring-slate-200/70">
+        <div className="aspect-[1.12/1] overflow-hidden">
+          <PortfolioMedia
+            item={item}
+            className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04] ${mediaClassName}`}
+          />
+        </div>
+      </div>
+      <div className="mt-4 border-t border-slate-200/80 pt-4">
+        <p className={portfolioTileTagClass}>{item.tag}</p>
+        <h4 className="mt-2 font-heading text-lg font-semibold text-brand-navy">{item.title}</h4>
+        <p className="mt-1 text-sm leading-relaxed text-slate-500">{item.lieu}</p>
+      </div>
+    </article>
+  );
+}
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -100,6 +261,7 @@ export default function Accueil() {
   }, [nextSlide]);
 
   useEffect(() => {
+    if (!API) return;
     axios.get(`${API}/testimonials`).then(r => setTestimonials(r.data)).catch(() => {});
   }, []);
 
@@ -117,7 +279,7 @@ export default function Accueil() {
           <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 w-full">
             <motion.div initial="hidden" animate="visible" className="max-w-2xl">
               <motion.p variants={fadeUp} custom={0} className="text-brand-gold font-heading font-semibold text-sm tracking-[0.2em] uppercase mb-6">
-                ABS Cloison - Depuis 2009
+                ABS Cloison - 30 ans d'expérience
               </motion.p>
               <motion.h1 variants={fadeUp} custom={1} className="font-heading font-light text-4xl md:text-5xl lg:text-7xl text-white leading-[1.1] mb-6">
                 L'élégance de la<br />
@@ -186,21 +348,44 @@ export default function Accueil() {
       </section>
 
       {/* BEFORE / AFTER SLIDER */}
-      <section data-testid="before-after-section" className="py-20 md:py-32 bg-white">
+      <section data-testid="before-after-section" className="py-20 md:py-32 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-12">
-            <p className="text-brand-gold font-heading font-semibold text-sm tracking-[0.2em] uppercase mb-4">Transformation</p>
-            <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-brand-navy mb-4">
-              Avant / Après
-            </h2>
-            <p className="text-slate-500 max-w-2xl">
-              Glissez pour découvrir la transformation spectaculaire de vos espaces avec nos solutions de cloisonnement.
-            </p>
-            <div className="section-divider mt-4" />
-          </motion.div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={1}>
-            <BeforeAfterSlider />
-          </motion.div>
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[0.95fr_1.15fr] lg:gap-16">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+              <p className="text-brand-gold font-heading font-semibold text-sm tracking-[0.2em] uppercase mb-4">Transformation</p>
+              <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-brand-navy mb-4">
+                Avant / Après
+              </h2>
+              <p className="text-slate-500 max-w-xl mb-8">
+                Une lecture simple de l'avant et de l'après pour montrer comment un plateau devient un environnement plus lisible, plus calme et mieux sécurisé.
+              </p>
+              <div className="section-divider mb-8" />
+
+              <div className="space-y-3">
+                {transformationHighlights.map((item) => (
+                  <div
+                    key={item.title}
+                    className="flex items-start gap-4 rounded-2xl border border-slate-200 bg-white px-5 py-4"
+                  >
+                    <div className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-navy text-white">
+                      <item.icon className="h-5 w-5" strokeWidth={1.8} />
+                    </div>
+                    <div>
+                      <h3 className="font-heading font-bold text-lg text-brand-navy mb-1">{item.title}</h3>
+                      <p className="text-sm leading-relaxed text-slate-500">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={1}>
+              <BeforeAfterSlider />
+              <p className="mt-4 text-sm leading-relaxed text-slate-500">
+                Cette comparaison illustre la logique de nos aménagements : séparer sans alourdir, structurer sans perdre la lumière, et intégrer les usages au quotidien.
+              </p>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -208,7 +393,7 @@ export default function Accueil() {
       <section data-testid="systems-preview-section" className="py-20 md:py-32 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-16">
-            <p className="text-brand-gold font-heading font-semibold text-sm tracking-[0.2em] uppercase mb-4">Nos 6 Solutions</p>
+            <p className="text-brand-gold font-heading font-semibold text-sm tracking-[0.2em] uppercase mb-4">Nos {systems.length} Solutions</p>
             <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-brand-navy mb-4">
               Des systèmes d'exception
             </h2>
@@ -279,42 +464,85 @@ export default function Accueil() {
         </div>
       </section>
 
+      {/* CLIENTS TRUST SECTION */}
+      <ClientsCarousel />
+
       {/* REAL PHOTOS PORTFOLIO PREVIEW */}
       <section data-testid="portfolio-preview" className="py-20 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-16">
-            <p className="text-brand-gold font-heading font-semibold text-sm tracking-[0.2em] uppercase mb-4">Nos Réalisations</p>
-            <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-brand-navy mb-6">
+            <p className="text-brand-gold font-heading font-semibold text-sm tracking-[0.2em] uppercase mb-4">Nos réalisations</p>
+            <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-brand-navy mb-4">
               L'excellence en images
             </h2>
+            <p className="text-slate-500 max-w-xl mb-6">
+              Une sélection resserrée pour montrer les accès, les circulations et la précision des finitions.
+            </p>
             <div className="section-divider" />
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {[
-              { img: "https://customer-assets.emergentagent.com/job_4b731054-35b8-4aa7-b551-25e79cfee9fa/artifacts/kk51kuyc_IMG-20260318-WA0015.jpg", title: "Cloisons Vitrées", lieu: "Lyon" },
-              { img: "https://customer-assets.emergentagent.com/job_4b731054-35b8-4aa7-b551-25e79cfee9fa/artifacts/gn7jonju_IMG-20260318-WA0011.jpg", title: "Installation en Site Occupé", lieu: "Villeurbanne" },
-              { img: "https://customer-assets.emergentagent.com/job_4b731054-35b8-4aa7-b551-25e79cfee9fa/artifacts/7qtav35z_IMG-20260318-WA0021.jpg", title: "Aménagement Technique", lieu: "Anse" },
-            ].map((item, idx) => (
+          <div className="space-y-10">
+            <div className="grid gap-8 lg:grid-cols-2 xl:gap-10">
               <motion.div
-                key={idx}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeUp}
-                custom={idx}
+                custom={0}
+                className="h-full"
               >
-                <div className="portfolio-item aspect-[4/3] cursor-pointer" data-testid={`portfolio-preview-${idx}`}>
-                  <img src={item.img} alt={item.title} className="w-full h-full object-cover" />
-                  <div className="overlay">
-                    <div className="overlay-content text-white">
-                      <p className="text-brand-gold text-xs uppercase tracking-widest mb-1">{item.lieu}</p>
-                      <h4 className="font-heading font-bold text-lg">{item.title}</h4>
-                    </div>
-                  </div>
-                </div>
+                <PortfolioFeaturePanel
+                  item={featuredPortfolioItem}
+                  testId="portfolio-preview-0"
+                  minHeightClass="min-h-[360px] md:min-h-[460px] xl:min-h-[520px]"
+                  mediaClassName="object-center"
+                  titleClassName="text-[1.9rem] md:text-[2.3rem]"
+                />
               </motion.div>
-            ))}
+
+              <div className="grid gap-8 h-full">
+                {supportingPortfolioItems.map((item, idx) => (
+                  <motion.div
+                    key={`${item.title}-${idx}`}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={fadeUp}
+                    custom={idx + 1}
+                    className="h-full"
+                  >
+                    <PortfolioFeaturePanel
+                      item={item}
+                      testId={`portfolio-preview-${idx + 1}`}
+                      minHeightClass="min-h-[360px] md:min-h-[460px] xl:min-h-[520px]"
+                      mediaClassName="object-center"
+                      titleClassName="text-[1.9rem] md:text-[2.15rem]"
+                    />
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            <div className="border-t border-slate-200/80 pt-8 md:pt-10">
+              <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+                {editorialPortfolioTiles.map((item, idx) => (
+                  <motion.div
+                    key={`${item.title}-${idx}`}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={fadeUp}
+                    custom={idx + 3}
+                  >
+                    <PortfolioEditorialTile
+                      item={item}
+                      testId={`portfolio-preview-detail-${idx}`}
+                      mediaClassName={item === passagePortfolioItem ? "object-center" : ""}
+                    />
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
 
           <div className="text-center mt-12">
@@ -374,7 +602,7 @@ export default function Accueil() {
       <section data-testid="cta-section" className="relative py-24 md:py-32 overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://static.prod-images.emergentagent.com/jobs/4b731054-35b8-4aa7-b551-25e79cfee9fa/images/83edbda040d467ca43b00584687d301b51d1431ae132839ffc7f7cbae0bdfff7.png"
+            src="/systems/cta-bureau-transforme.png"
             alt="Bureau transformé"
             className="w-full h-full object-cover"
           />

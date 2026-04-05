@@ -4,7 +4,7 @@ import { MapPin, Phone, Mail, Clock, ArrowRight, ArrowLeft, Check } from "lucide
 import { Helmet } from "react-helmet-async";
 import axios from "axios";
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+const API = process.env.REACT_APP_BACKEND_URL ? `${process.env.REACT_APP_BACKEND_URL}/api` : null;
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -16,15 +16,14 @@ const cloisonTypes = [
   { value: "allege", label: "Vitrée sur Allège", desc: "Intimité et luminosité" },
   { value: "pleine", label: "Cloison Pleine", desc: "Acoustique et confidentialité" },
   { value: "coulissante", label: "Porte Coulissante", desc: "Fluidité et élégance" },
-  { value: "mobile", label: "Mur Mobile", desc: "Flexibilité maximale" },
   { value: "phonebox", label: "Phone Box", desc: "Bulle d'isolation acoustique" },
   { value: "mixte", label: "Solution Mixte", desc: "Combinaison sur mesure" },
 ];
 
 const confidentialiteLevels = [
   { value: "standard", label: "Standard", desc: "Séparation visuelle, acoustique normale" },
-  { value: "confidentiel", label: "Confidentiel", desc: "Isolation acoustique renforcée (40dB+)" },
-  { value: "total", label: "Total", desc: "Isolation maximale (50dB+), opacité complète" },
+  { value: "confidentiel", label: "Confidentiel", desc: "Isolation acoustique renforcée" },
+  { value: "total", label: "Total", desc: "Isolation maximale, opacité complète" },
 ];
 
 const stepLabels = ["Type", "Dimensions", "Acoustique", "Contact"];
@@ -57,6 +56,10 @@ export default function Contact() {
 
   const handleSubmit = async () => {
     if (!canNext()) return;
+    if (!API) {
+      alert("Service temporairement indisponible. Veuillez nous appeler ou reessayer plus tard.");
+      return;
+    }
     setLoading(true);
     try {
       await axios.post(`${API}/devis`, form);

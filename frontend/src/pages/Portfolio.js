@@ -1,10 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import axios from "axios";
-
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -13,14 +10,26 @@ const fadeUp = {
 
 const categories = ["Tous", "Bureaux", "Showrooms", "Industrie"];
 
+const portfolioItems = [
+  { id: 1, image: "/portfolio/IMG-20260318-WA0000.jpg", titre: "Espace Pods Transparents", lieu: "Lyon", categorie: "Bureaux" },
+  { id: 2, image: "/portfolio/IMG-20260318-WA0004.jpg", titre: "Installation en Site Occupé", lieu: "Villeurbanne", categorie: "Industrie" },
+  { id: 3, image: "/portfolio/IMG-20260318-WA0005.jpg", titre: "Montage Structure Aluminium", lieu: "Paris", categorie: "Industrie" },
+  { id: 4, image: "/portfolio/IMG-20260318-WA0006.jpg", titre: "Aménagement Rangée Bureaux", lieu: "Marseille", categorie: "Bureaux" },
+  { id: 5, image: "/portfolio/IMG-20260318-WA0007.jpg", titre: "Assemblage Profilés Noirs", lieu: "Grenoble", categorie: "Industrie" },
+  { id: 6, image: "/portfolio/IMG-20260318-WA0008.jpg", titre: "Finition Jonction Plafond", lieu: "Vénissieux", categorie: "Bureaux" },
+  { id: 7, image: "/portfolio/IMG-20260318-WA0009.jpg", titre: "Espaces Modulaires Vitrés", lieu: "Annecy", categorie: "Showrooms" },
+  { id: 8, image: "/portfolio/IMG-20260318-WA0011.jpg", titre: "Cloison Mixte et Panneau Rouge", lieu: "Villeurbanne", categorie: "Bureaux" },
+  { id: 9, image: "/portfolio/IMG-20260318-WA0015.jpg", titre: "Angle Bord à Bord Épuré", lieu: "Lyon", categorie: "Showrooms" },
+  { id: 10, image: "/portfolio/IMG-20260318-WA0021.jpg", titre: "Préparation Profilés Blancs", lieu: "Anse", categorie: "Industrie" },
+  { id: 11, image: "/portfolio/IMG-20260318-WA0022.jpg", titre: "Intégration Plafond Technique", lieu: "Paris", categorie: "Industrie" },
+  { id: 12, image: "/portfolio/DFF380DD-AC17-4E69-929D-7C640E9B688C.png", titre: "Séparation Vitrée Dépolie", lieu: "Studio", categorie: "Bureaux" },
+  { id: 13, image: "/portfolio/acces-securise.jpg", titre: "Accès sécurisés intégrés", lieu: "Contrôle d'accès", categorie: "Bureaux" },
+];
+
 export default function Portfolio() {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(portfolioItems);
   const [filter, setFilter] = useState("Tous");
   const [selectedItem, setSelectedItem] = useState(null);
-
-  useEffect(() => {
-    axios.get(`${API}/portfolio`).then(r => setItems(r.data)).catch(() => {});
-  }, []);
 
   const filtered = filter === "Tous" ? items : items.filter(i => i.categorie === filter);
 
@@ -149,26 +158,36 @@ export default function Portfolio() {
             <div className="section-divider" />
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
               <video
-                src="https://customer-assets.emergentagent.com/job_4b731054-35b8-4aa7-b551-25e79cfee9fa/artifacts/hkekcxkx_VID-20260318-WA0002.mp4"
+                src="/portfolio/VID-20260318-WA0002.mp4"
                 controls
                 className="w-full aspect-video object-cover bg-slate-200"
                 data-testid="portfolio-video-1"
                 preload="metadata"
               />
-              <p className="mt-3 text-slate-500 text-sm">Installation de cloisons vitrées en site occupé</p>
+              <p className="mt-3 text-slate-500 text-sm">Démonstration cloisons vitrées claires et dépolies</p>
             </motion.div>
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={1}>
               <video
-                src="https://customer-assets.emergentagent.com/job_4b731054-35b8-4aa7-b551-25e79cfee9fa/artifacts/obweirt2_VID-20260318-WA0018.mp4"
+                src="/portfolio/VID-20260318-WA0003.mp4"
                 controls
                 className="w-full aspect-video object-cover bg-slate-200"
                 data-testid="portfolio-video-2"
                 preload="metadata"
               />
-              <p className="mt-3 text-slate-500 text-sm">Pose de système de cloisons mobiles</p>
+              <p className="mt-3 text-slate-500 text-sm">Tour des espaces et finitions haut de gamme</p>
+            </motion.div>
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={2}>
+              <video
+                src="/portfolio/VID-20260318-WA0018.mp4"
+                controls
+                className="w-full aspect-video object-cover bg-slate-200"
+                data-testid="portfolio-video-3"
+                preload="metadata"
+              />
+              <p className="mt-3 text-slate-500 text-sm">Avancement du chantier et intégration technique au plafond</p>
             </motion.div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail, ArrowUp } from "lucide-react";
+import Logo from "./Logo";
 
 export default function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
@@ -11,9 +12,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="font-heading font-bold text-2xl tracking-tight mb-6">
-              <span className="text-brand-gold">ABS</span> CLOISON
-            </div>
+            <Logo variant="footer" className="mb-6" />
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
               L'excellence dans l'aménagement d'espaces professionnels. Cloisons amovibles haut de gamme. Région lyonnaise et partout en France.
             </p>
@@ -59,7 +58,6 @@ export default function Footer() {
               <li className="text-slate-400">Vitrées sur Allège</li>
               <li className="text-slate-400">Cloisons Pleines Acoustiques</li>
               <li className="text-slate-400">Portes Coulissantes</li>
-              <li className="text-slate-400">Murs Mobiles</li>
               <li className="text-slate-400">Phone Box & Bulles d'Isolation</li>
             </ul>
           </div>
