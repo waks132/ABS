@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback } from "react";
+import { publicAsset } from "@/lib/publicAsset";
 
 const BEFORE_IMG = "/portfolio/avant-chantier.jpg";
 const AFTER_IMG = "/portfolio/apres-chantier.jpg";
@@ -53,7 +54,7 @@ export default function BeforeAfterSlider() {
       onTouchEnd={onMouseUp}
     >
       <img
-        src={AFTER_IMG}
+        src={publicAsset(AFTER_IMG)}
         alt="Après chantier - espace finalisé et prêt à l'usage"
         className="absolute inset-0 h-full w-full object-cover"
         draggable={false}
@@ -61,7 +62,7 @@ export default function BeforeAfterSlider() {
 
       <div className="absolute inset-0 overflow-hidden" style={{ width: `${position}%` }}>
         <img
-          src={BEFORE_IMG}
+          src={publicAsset(BEFORE_IMG)}
           alt="Avant transformation - espace ouvert sans cloisons"
           className="absolute inset-0 h-full w-full object-cover"
           style={{ width: `${containerRef.current ? containerRef.current.offsetWidth : 0}px`, maxWidth: "none" }}

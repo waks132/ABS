@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { publicAsset } from "@/lib/publicAsset";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -110,14 +111,14 @@ export default function ClientsCarousel() {
                 <div className="w-full h-full flex items-center justify-center">
                   {client.customLayout ? (
                     <div className="flex items-center gap-3 w-full justify-center">
-                      <img src={client.logo} alt="Marianne" className="h-10 md:h-12 w-auto object-contain shrink-0" />
+                      <img src={publicAsset(client.logo)} alt="Marianne" className="h-10 md:h-12 w-auto object-contain shrink-0" />
                       <span className="font-heading font-extrabold text-[11px] md:text-xs text-brand-navy leading-tight border-l-2 border-slate-200 pl-3 uppercase">
                         {client.name}
                       </span>
                     </div>
                   ) : (
                     <img
-                      src={client.logo}
+                      src={publicAsset(client.logo)}
                       alt={`Logo ${client.name}`}
                       className="max-w-[140px] md:max-w-[170px] max-h-[50px] md:max-h-[60px] object-contain"
                       onError={(e) => {
@@ -168,7 +169,7 @@ export default function ClientsCarousel() {
                   key={i}
                   className="w-10 h-10 rounded-full border-[3px] border-white overflow-hidden shadow-sm flex items-center justify-center bg-white"
                 >
-                  <img src={style.img} alt="Logo" className="w-[70%] h-[70%] object-contain" />
+                  <img src={publicAsset(style.img)} alt="Logo" className="w-[70%] h-[70%] object-contain" />
                 </div>
               ))}
             </div>

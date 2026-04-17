@@ -5,6 +5,7 @@ import { Shield, Clock, Blocks, Award, ArrowRight, ChevronRight, Star, Volume2, 
 import axios from "axios";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import ClientsCarousel from "@/components/ClientsCarousel";
+import { publicAsset } from "@/lib/publicAsset";
 
 const API = process.env.REACT_APP_BACKEND_URL ? `${process.env.REACT_APP_BACKEND_URL}/api` : null;
 
@@ -184,9 +185,9 @@ const portfolioTileTagClass =
 
 function PortfolioMedia({ item, className = "" }) {
   return item.img.endsWith(".mp4") ? (
-    <video src={item.img} autoPlay loop muted playsInline className={className} />
+    <video src={publicAsset(item.img)} autoPlay loop muted playsInline className={className} />
   ) : (
-    <img src={item.img} alt={item.title} className={className} />
+    <img src={publicAsset(item.img)} alt={item.title} className={className} />
   );
 }
 
@@ -271,7 +272,7 @@ export default function Accueil() {
       <section data-testid="hero-section" className="relative h-screen min-h-[700px] overflow-hidden">
         {heroSlides.map((slide, idx) => (
           <div key={idx} className={`hero-slide ${idx === currentSlide ? "active" : ""}`}>
-            <img src={slide.image} alt={slide.alt} className="w-full h-full object-cover" />
+            <img src={publicAsset(slide.image)} alt={slide.alt} className="w-full h-full object-cover" />
           </div>
         ))}
         <div className="hero-gradient absolute inset-0" />
@@ -419,7 +420,7 @@ export default function Accueil() {
                   className="group block card-lift bg-white border border-slate-100 overflow-hidden"
                 >
                   <div className="img-zoom aspect-[4/3] relative">
-                    <img src={sys.image} alt={sys.title} className="w-full h-full object-cover" />
+                    <img src={publicAsset(sys.image)} alt={sys.title} className="w-full h-full object-cover" />
                     <span className="absolute top-4 left-4 bg-brand-navy text-white text-xs font-semibold tracking-wider uppercase px-3 py-1.5">
                       {sys.tag}
                     </span>
@@ -602,7 +603,7 @@ export default function Accueil() {
       <section data-testid="cta-section" className="relative py-24 md:py-32 overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/systems/cta-bureau-transforme.png"
+            src={publicAsset("/systems/cta-bureau-transforme.png")}
             alt="Bureau transformé"
             className="w-full h-full object-cover"
           />

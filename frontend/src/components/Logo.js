@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { publicAsset } from "@/lib/publicAsset";
 
 const BRAND_IMAGE = "/branding/logo-abs-cloison-horizontal-clean.png";
 
@@ -24,7 +25,7 @@ export default function Logo({ variant = "dark", className = "" }) {
     <Link to="/" data-testid="logo-link" className={`group inline-flex shrink-0 ${className}`} aria-label="ABS Cloison">
       <span className={`relative inline-flex transition-transform duration-300 group-hover:-translate-y-0.5 ${current.shell}`}>
         <img
-          src={BRAND_IMAGE}
+          src={publicAsset(BRAND_IMAGE)}
           alt="ABS Cloison"
           className={`block h-auto rounded-[20px] object-cover object-center ${current.image}`}
           draggable={false}

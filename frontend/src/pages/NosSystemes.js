@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Eye, Volume2, Maximize2, ArrowRight, Check, ChevronRight, PanelTop, DoorOpen, Headphones } from "lucide-react";
 import { Helmet } from "react-helmet-async";
+import { publicAsset } from "@/lib/publicAsset";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -195,10 +196,10 @@ export default function NosSystemes() {
               >
                 <div className="space-y-4">
                   <div className="img-zoom aspect-[4/3] overflow-hidden">
-                    <img src={sys.image} alt={sys.title} className="w-full h-full object-cover" />
+                    <img src={publicAsset(sys.image)} alt={sys.title} className="w-full h-full object-cover" />
                   </div>
                   <div className="img-zoom aspect-[16/9] overflow-hidden">
-                    <img src={sys.realPhoto} alt={`${sys.title} - réalisation ABS Cloison`} className="w-full h-full object-cover" />
+                    <img src={publicAsset(sys.realPhoto)} alt={`${sys.title} - réalisation ABS Cloison`} className="w-full h-full object-cover" />
                   </div>
                 </div>
               </motion.div>

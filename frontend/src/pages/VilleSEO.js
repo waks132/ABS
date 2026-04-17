@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { MapPin, Phone, ArrowRight, Check, Shield, Clock, Blocks, Award } from "lucide-react";
 import { Helmet } from "react-helmet-async";
+import { publicAsset } from "@/lib/publicAsset";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -147,7 +148,7 @@ export default function VilleSEO() {
       <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-brand-navy relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <img
-            src="/systems/cta-bureau-transforme.png"
+            src={publicAsset("/systems/cta-bureau-transforme.png")}
             alt="" className="w-full h-full object-cover"
           />
         </div>

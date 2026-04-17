@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { publicAsset } from "@/lib/publicAsset";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -90,7 +91,7 @@ export default function Portfolio() {
                   data-testid={`portfolio-item-${idx}`}
                   onClick={() => setSelectedItem(item)}
                 >
-                  <img src={item.image} alt={item.titre} className="w-full h-full object-cover" />
+                  <img src={publicAsset(item.image)} alt={item.titre} className="w-full h-full object-cover" />
                   <div className="overlay">
                     <div className="overlay-content text-white">
                       <span className="inline-block bg-brand-gold text-white text-xs font-semibold tracking-wider uppercase px-2 py-1 mb-2">
@@ -125,7 +126,7 @@ export default function Portfolio() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="aspect-video">
-              <img src={selectedItem.image} alt={selectedItem.titre} className="w-full h-full object-cover" />
+              <img src={publicAsset(selectedItem.image)} alt={selectedItem.titre} className="w-full h-full object-cover" />
             </div>
             <div className="p-8">
               <span className="inline-block bg-brand-gold text-white text-xs font-semibold tracking-wider uppercase px-3 py-1.5 mb-4">
@@ -161,7 +162,7 @@ export default function Portfolio() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
               <video
-                src="/portfolio/VID-20260318-WA0002.mp4"
+                src={publicAsset("/portfolio/VID-20260318-WA0002.mp4")}
                 controls
                 className="w-full aspect-video object-cover bg-slate-200"
                 data-testid="portfolio-video-1"
@@ -171,7 +172,7 @@ export default function Portfolio() {
             </motion.div>
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={1}>
               <video
-                src="/portfolio/VID-20260318-WA0003.mp4"
+                src={publicAsset("/portfolio/VID-20260318-WA0003.mp4")}
                 controls
                 className="w-full aspect-video object-cover bg-slate-200"
                 data-testid="portfolio-video-2"
@@ -181,7 +182,7 @@ export default function Portfolio() {
             </motion.div>
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={2}>
               <video
-                src="/portfolio/VID-20260318-WA0018.mp4"
+                src={publicAsset("/portfolio/VID-20260318-WA0018.mp4")}
                 controls
                 className="w-full aspect-video object-cover bg-slate-200"
                 data-testid="portfolio-video-3"
