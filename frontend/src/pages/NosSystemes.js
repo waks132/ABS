@@ -89,7 +89,7 @@ const systems = [
     navLabel: "Portes coulissantes",
     subtitle: "Le geste architectural",
     tag: "Élégance",
-    image: "/systems/chantier-porte-pivotante.jpg",
+    video: "/portfolio/VID-20260318-WA0003.mp4",
     description: "Nos portes coulissantes vitrées apportent une fluidité remarquable à la circulation dans vos espaces. Rail apparent ou encastré, simple ou double vantail : chaque configuration s'adapte à votre architecture intérieure.",
     features: [
       "Rail apparent ou encastré au choix",
@@ -196,7 +196,20 @@ export default function NosSystemes() {
               >
                 <div className="img-zoom overflow-hidden rounded-[28px] bg-slate-100 ring-1 ring-slate-200/70">
                   <div className="aspect-[4/5] overflow-hidden">
-                    <img src={publicAsset(sys.image)} alt={`${sys.title} - réalisation ABS Cloison`} className="h-full w-full object-cover object-center" />
+                    {sys.video ? (
+                      <video
+                        src={publicAsset(sys.video)}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="metadata"
+                        aria-label={`${sys.title} - réalisation ABS Cloison`}
+                        className="h-full w-full object-cover object-center"
+                      />
+                    ) : (
+                      <img src={publicAsset(sys.image)} alt={`${sys.title} - réalisation ABS Cloison`} className="h-full w-full object-cover object-center" />
+                    )}
                   </div>
                 </div>
               </motion.div>

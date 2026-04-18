@@ -56,7 +56,7 @@ const systems = [
   {
     title: "Portes Coulissantes",
     desc: "Rail apparent ou encastré, soft-close. Fluidité de circulation et élégance architecturale.",
-    image: "/systems/chantier-porte-pivotante.jpg",
+    video: "/portfolio/VID-20260318-WA0003.mp4",
     icon: DoorOpen,
     tag: "Élégance",
   },
@@ -420,7 +420,20 @@ export default function Accueil() {
                   className="group block card-lift bg-white border border-slate-100 overflow-hidden"
                 >
                   <div className="img-zoom aspect-[4/5] relative bg-slate-100">
-                    <img src={publicAsset(sys.image)} alt={sys.title} className="h-full w-full object-cover object-center" />
+                    {sys.video ? (
+                      <video
+                        src={publicAsset(sys.video)}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="metadata"
+                        aria-label={sys.title}
+                        className="h-full w-full object-cover object-center"
+                      />
+                    ) : (
+                      <img src={publicAsset(sys.image)} alt={sys.title} className="h-full w-full object-cover object-center" />
+                    )}
                     <span className="absolute top-4 left-4 bg-brand-navy text-white text-xs font-semibold tracking-wider uppercase px-3 py-1.5">
                       {sys.tag}
                     </span>
