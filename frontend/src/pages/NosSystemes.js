@@ -89,7 +89,7 @@ const systems = [
     navLabel: "Portes coulissantes",
     subtitle: "Le geste architectural",
     tag: "Élégance",
-    video: "/portfolio/VID-20260318-WA0003.mp4",
+    video: "/portfolio/video-portes-coulissantes.mp4",
     description: "Nos portes coulissantes vitrées apportent une fluidité remarquable à la circulation dans vos espaces. Rail apparent ou encastré, simple ou double vantail : chaque configuration s'adapte à votre architecture intérieure.",
     features: [
       "Rail apparent ou encastré au choix",

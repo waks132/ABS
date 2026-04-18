@@ -56,7 +56,7 @@ const systems = [
   {
     title: "Portes Coulissantes",
     desc: "Rail apparent ou encastré, soft-close. Fluidité de circulation et élégance architecturale.",
-    video: "/portfolio/VID-20260318-WA0003.mp4",
+    video: "/portfolio/video-portes-coulissantes.mp4",
     icon: DoorOpen,
     tag: "Élégance",
   },
