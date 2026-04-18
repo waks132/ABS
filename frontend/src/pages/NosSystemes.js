@@ -18,7 +18,7 @@ const systems = [
     subtitle: "L'art de la transparence",
     tag: "Best-seller",
     image: "/systems/chantier-cloison-luxe-double-vitrage.jpg",
-    description: "Nos cloisons vitrées bord à bord incarnent l'élégance architecturale contemporaine. Sans montants visibles, elles offrent une transparence maximale tout en garantissant un confort acoustique remarquable grâce au vitrage Stadip Silence.",
+    description: "Nos cloisons vitrées bord à bord incarnent l'élégance architecturale contemporaine. Disponibles en simple ou double vitrage, elles offrent une transparence maximale tout en garantissant un confort acoustique remarquable grâce au vitrage Stadip Silence.",
     features: [
       "Look bord à bord sans montants visibles",
       "Vitrage Stadip Silence pour confort acoustique",

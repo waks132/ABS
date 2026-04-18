@@ -34,7 +34,7 @@ const promises = [
 const systems = [
   {
     title: "Cloisons Vitrées Luxe",
-    desc: "Look bord à bord sans montants visibles. Vitrage Stadip Silence pour transparence et confort acoustique.",
+    desc: "Simple ou double vitrage bord à bord, sans montants visibles. Transparence haut de gamme et confort acoustique.",
     image: "/systems/chantier-cloison-luxe-double-vitrage.jpg",
     icon: Eye,
     tag: "Best-seller",
