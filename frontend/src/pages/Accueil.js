@@ -35,28 +35,28 @@ const systems = [
   {
     title: "Cloisons Vitrées Luxe",
     desc: "Look bord à bord sans montants visibles. Vitrage Stadip Silence pour transparence et confort acoustique.",
-    image: "/systems/cloisons-vitrees-luxe.png",
+    image: "/systems/chantier-cloison-luxe-double-vitrage.jpg",
     icon: Eye,
     tag: "Best-seller",
   },
   {
     title: "Vitrées sur Allège",
     desc: "Soubassement plein pour intimité et câblage, partie haute vitrée pour la lumière naturelle.",
-    image: "/systems/cloisons-allege.png",
+    image: "/systems/chantier-cloison-vitree-allege.jpg",
     icon: PanelTop,
     tag: "Polyvalent",
   },
   {
     title: "Cloisons Pleines Acoustiques",
     desc: "Finitions haut de gamme en bois et tissu. Isolation phonique optimale.",
-    image: "/systems/cloisons-pleines-acoustiques.png",
+    image: "/systems/chantier-cloison-acoustique.jpg",
     icon: Volume2,
     tag: "Acoustique",
   },
   {
     title: "Portes Coulissantes",
     desc: "Rail apparent ou encastré, soft-close. Fluidité de circulation et élégance architecturale.",
-    image: "/systems/portes-coulissantes.png",
+    image: "/systems/chantier-porte-pivotante.jpg",
     icon: DoorOpen,
     tag: "Élégance",
   },
@@ -64,7 +64,7 @@ const systems = [
   {
     title: "Phone Box & Bulles d'Isolation",
     desc: "Cabines acoustiques plug & play. Concentration et confidentialité en open space.",
-    image: "/systems/phone-box.png",
+    image: "/systems/chantier-phone-box.jpg",
     icon: Headphones,
     tag: "Tendance",
   },
@@ -419,13 +419,13 @@ export default function Accueil() {
                   data-testid={`system-card-${idx}`}
                   className="group block card-lift bg-white border border-slate-100 overflow-hidden"
                 >
-                  <div className="img-zoom aspect-[4/3] relative">
-                    <img src={publicAsset(sys.image)} alt={sys.title} className="w-full h-full object-cover" />
+                  <div className="img-zoom aspect-[4/5] relative bg-slate-100">
+                    <img src={publicAsset(sys.image)} alt={sys.title} className="h-full w-full object-cover object-center" />
                     <span className="absolute top-4 left-4 bg-brand-navy text-white text-xs font-semibold tracking-wider uppercase px-3 py-1.5">
                       {sys.tag}
                     </span>
                   </div>
-                  <div className="p-8">
+                  <div className="p-6 md:p-7">
                     <div className="flex items-center gap-3 mb-3">
                       <sys.icon className="w-5 h-5 text-brand-gold" strokeWidth={1.5} />
                       <h3 className="font-heading font-bold text-lg text-brand-navy">{sys.title}</h3>

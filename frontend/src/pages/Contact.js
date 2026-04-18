@@ -13,7 +13,7 @@ const fadeUp = {
 
 const cloisonTypes = [
   { value: "vitree", label: "Cloison Vitrée", desc: "Transparence et lumière" },
-  { value: "allege", label: "Vitrée sur Allège", desc: "Intimité et luminosité" },
+  { value: "allege", label: "Vitrée sur allège", desc: "Intimité et luminosité" },
   { value: "pleine", label: "Cloison Pleine", desc: "Acoustique et confidentialité" },
   { value: "coulissante", label: "Porte Coulissante", desc: "Fluidité et élégance" },
   { value: "phonebox", label: "Phone Box", desc: "Bulle d'isolation acoustique" },

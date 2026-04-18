@@ -12,6 +12,11 @@ const navLinks = [
   { path: "/contact", label: "Contact" },
 ];
 
+const contactLines = [
+  { label: "Bureau", href: "tel:0482839186", value: "04 82 83 91 86" },
+  { label: "Portable", href: "tel:0753801260", value: "07 53 80 12 60" },
+];
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -30,6 +35,11 @@ export default function Navbar() {
 
   const navBg = scrolled || !isHome ? "glass-nav" : "glass-nav-transparent";
   const textColor = scrolled || !isHome ? "text-brand-navy" : "text-white";
+  const contactLabelColor = scrolled || !isHome ? "text-slate-400" : "text-white/60";
+  const contactPanelTone = scrolled || !isHome
+    ? "bg-white/72 ring-1 ring-slate-200/80 shadow-[0_14px_34px_rgba(15,23,42,0.08)]"
+    : "bg-white/10 ring-1 ring-white/15 shadow-[0_16px_38px_rgba(15,23,42,0.16)] backdrop-blur-md";
+  const contactIconTone = scrolled || !isHome ? "bg-brand-gold/12 text-brand-gold" : "bg-white/12 text-white";
   return (
     <nav
       data-testid="main-navbar"
@@ -59,15 +69,27 @@ export default function Navbar() {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center gap-4">
-            <a
-              href="tel:0753801260"
-              data-testid="nav-phone-btn"
-              className={`flex items-center gap-2 text-sm font-medium ${textColor} transition-colors duration-300`}
-            >
-              <Phone className="w-4 h-4" />
-              07 53 80 12 60
-            </a>
+          <div className="hidden lg:flex items-center gap-3">
+            <div className={`flex items-center gap-3 rounded-full px-4 py-2.5 ${contactPanelTone}`}>
+              <span className={`flex h-9 w-9 items-center justify-center rounded-full ${contactIconTone}`}>
+                <Phone className="h-4 w-4" />
+              </span>
+              <div className="flex flex-col items-end gap-1">
+                {contactLines.map((line) => (
+                  <a
+                    key={line.label}
+                    href={line.href}
+                    data-testid={`nav-phone-${line.label.toLowerCase()}`}
+                    className={`flex items-center gap-2 text-sm font-medium leading-none ${textColor} transition-colors duration-300 hover:text-brand-gold`}
+                  >
+                    <span className={`hidden xl:inline text-[10px] font-semibold uppercase tracking-[0.18em] ${contactLabelColor}`}>
+                      {line.label}
+                    </span>
+                    <span className="whitespace-nowrap">{line.value}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
             <Link
               to="/contact"
               data-testid="nav-devis-btn"
@@ -115,12 +137,17 @@ export default function Navbar() {
                 </Link>
               ))}
               <div className="pt-6 space-y-3">
-                <a
-                  href="tel:0753801260"
-                  className="flex items-center gap-2 text-brand-navy font-medium"
-                >
-                  <Phone className="w-4 h-4" /> 07 53 80 12 60
-                </a>
+                {contactLines.map((line) => (
+                  <a
+                    key={line.label}
+                    href={line.href}
+                    className="flex items-center gap-2 text-brand-navy font-medium"
+                  >
+                    <Phone className="w-4 h-4" />
+                    <span className="text-xs uppercase tracking-[0.18em] text-slate-400">{line.label}</span>
+                    <span>{line.value}</span>
+                  </a>
+                ))}
                 <Link
                   to="/contact"
                   className="block text-center bg-brand-navy text-white py-3 text-sm font-semibold tracking-wider uppercase"

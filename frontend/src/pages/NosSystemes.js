@@ -14,10 +14,10 @@ const systems = [
     id: "vitrees",
     icon: Eye,
     title: "Cloisons Vitrées Luxe",
+    navLabel: "Vitrées luxe",
     subtitle: "L'art de la transparence",
     tag: "Best-seller",
-    image: "/systems/cloisons-vitrees-luxe.png",
-    realPhoto: "/portfolio/IMG-20260318-WA0015.jpg",
+    image: "/systems/chantier-cloison-luxe-double-vitrage.jpg",
     description: "Nos cloisons vitrées bord à bord incarnent l'élégance architecturale contemporaine. Sans montants visibles, elles offrent une transparence maximale tout en garantissant un confort acoustique remarquable grâce au vitrage Stadip Silence.",
     features: [
       "Look bord à bord sans montants visibles",
@@ -37,11 +37,11 @@ const systems = [
   {
     id: "allege",
     icon: PanelTop,
-    title: "Vitrées sur Allège",
+    title: "Cloison vitrée sur allège",
+    navLabel: "Vitrée sur allège",
     subtitle: "L'équilibre parfait",
     tag: "Polyvalent",
-    image: "/systems/cloisons-allege.png",
-    realPhoto: "/portfolio/IMG-20260318-WA0021.jpg",
+    image: "/systems/chantier-cloison-vitree-allege.jpg",
     description: "La cloison vitrée sur allège combine un soubassement plein pour la discrétion et le passage de câbles, avec un vitrage en partie haute pour la lumière naturelle. La solution idéale pour les open spaces et bureaux partagés.",
     features: [
       "Soubassement plein pour intimité et câblage",
@@ -62,10 +62,10 @@ const systems = [
     id: "pleines",
     icon: Volume2,
     title: "Cloisons Pleines Acoustiques",
+    navLabel: "Pleines acoustiques",
     subtitle: "Le silence comme luxe",
     tag: "Haute performance",
-    image: "/systems/cloisons-pleines-acoustiques.png",
-    realPhoto: "/portfolio/IMG-20260318-WA0021.jpg",
+    image: "/systems/chantier-cloison-acoustique.jpg",
     description: "Conçues pour une isolation phonique maximale, nos cloisons pleines combinent une âme isolante haute performance avec des finitions haut de gamme. Bois noble, tissu acoustique ou stratifié : chaque finition est un choix d'excellence.",
     features: [
       "Âme isolante haute performance",
@@ -86,10 +86,10 @@ const systems = [
     id: "coulissantes",
     icon: DoorOpen,
     title: "Portes Coulissantes",
+    navLabel: "Portes coulissantes",
     subtitle: "Le geste architectural",
     tag: "Élégance",
-    image: "/systems/portes-coulissantes.png",
-    realPhoto: "/portfolio/IMG-20260318-WA0011.jpg",
+    image: "/systems/chantier-porte-pivotante.jpg",
     description: "Nos portes coulissantes vitrées apportent une fluidité remarquable à la circulation dans vos espaces. Rail apparent ou encastré, simple ou double vantail : chaque configuration s'adapte à votre architecture intérieure.",
     features: [
       "Rail apparent ou encastré au choix",
@@ -111,10 +111,10 @@ const systems = [
     id: "phonebox",
     icon: Headphones,
     title: "Phone Box & Bulles d'Isolation",
+    navLabel: "Phone box",
     subtitle: "L'intimité instantanée",
     tag: "Tendance",
-    image: "/systems/phone-box.png",
-    realPhoto: "/portfolio/IMG-20260318-WA0015.jpg",
+    image: "/systems/chantier-phone-box.jpg",
     description: "Nos cabines acoustiques et bulles d'isolation offrent un espace de concentration et de confidentialité au coeur de l'open space. De la phone box individuelle à la cabine de réunion 4 places, trouvez la solution adaptée à votre besoin.",
     features: [
       "Isolation acoustique haute performance",
@@ -169,7 +169,7 @@ export default function NosSystemes() {
                 data-testid={`quick-nav-${sys.id}`}
                 className="text-xs font-heading font-semibold tracking-wider uppercase px-4 py-2 bg-slate-50 text-slate-500 hover:bg-brand-navy hover:text-white transition-all duration-300"
               >
-                {sys.title.split(" ").slice(0, 2).join(" ")}
+                {sys.navLabel ?? sys.title}
               </a>
             ))}
           </div>
@@ -194,12 +194,9 @@ export default function NosSystemes() {
                 variants={fadeUp}
                 className={`${idx % 2 === 1 ? "lg:order-2" : ""}`}
               >
-                <div className="space-y-4">
-                  <div className="img-zoom aspect-[4/3] overflow-hidden">
-                    <img src={publicAsset(sys.image)} alt={sys.title} className="w-full h-full object-cover" />
-                  </div>
-                  <div className="img-zoom aspect-[16/9] overflow-hidden">
-                    <img src={publicAsset(sys.realPhoto)} alt={`${sys.title} - réalisation ABS Cloison`} className="w-full h-full object-cover" />
+                <div className="img-zoom overflow-hidden rounded-[28px] bg-slate-100 ring-1 ring-slate-200/70">
+                  <div className="aspect-[4/5] overflow-hidden">
+                    <img src={publicAsset(sys.image)} alt={`${sys.title} - réalisation ABS Cloison`} className="h-full w-full object-cover object-center" />
                   </div>
                 </div>
               </motion.div>
